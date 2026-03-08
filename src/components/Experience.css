@@ -1,0 +1,172 @@
+/* ============================================
+   EXPERIENCE TIMELINE
+   ============================================ */
+
+.experience {
+    padding: var(--section-padding);
+    position: relative;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Left: About card */
+.experience-about {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.experience-about-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.experience-about-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.experience-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.experience-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(148, 163, 184, 0.04);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-base);
+}
+
+.experience-highlight:hover {
+    border-color: var(--border-glow-cyan);
+    color: var(--accent-cyan);
+}
+
+.experience-highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    flex-shrink: 0;
+}
+
+/* Right: Timeline */
+.experience-timeline {
+    position: relative;
+    padding-left: 28px;
+}
+
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), transparent);
+    opacity: 0.25;
+}
+
+.experience-item {
+    position: relative;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+
+.experience-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+.experience-item-dot {
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-cyan);
+    background: var(--bg-primary);
+    z-index: 2;
+}
+
+.experience-item:nth-child(even) .experience-item-dot {
+    border-color: var(--accent-purple);
+}
+
+.experience-item-card {
+    padding: 1.25rem 1.5rem;
+    transition: all var(--transition-base);
+}
+
+.experience-item-card:hover {
+    transform: translateX(6px);
+    border-color: var(--border-glow-cyan);
+    box-shadow: var(--shadow-cyan);
+}
+
+.experience-item:nth-child(even) .experience-item-card:hover {
+    border-color: var(--border-glow-purple);
+    box-shadow: var(--shadow-purple);
+}
+
+.experience-item-period {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-cyan);
+    margin-bottom: 0.35rem;
+}
+
+.experience-item:nth-child(even) .experience-item-period {
+    color: var(--accent-purple);
+}
+
+.experience-item-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.experience-item-org {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.experience-item-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+}

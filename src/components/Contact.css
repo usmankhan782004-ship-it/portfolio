@@ -1,0 +1,123 @@
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact {
+    padding: var(--section-padding);
+    padding-bottom: 4rem;
+}
+
+.contact-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-card {
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+}
+
+.contact-heading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.contact-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(148, 163, 184, 0.04);
+    border: 1px solid var(--border-subtle);
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    transform: translateY(-2px);
+    color: var(--accent-cyan);
+    border-color: var(--border-glow-cyan);
+    box-shadow: var(--shadow-cyan);
+}
+
+.contact-link--github:hover {
+    color: var(--text-primary);
+    border-color: rgba(148, 163, 184, 0.3);
+    box-shadow: 0 0 20px rgba(148, 163, 184, 0.1);
+}
+
+.contact-link--email:hover {
+    color: var(--accent-purple);
+    border-color: var(--border-glow-purple);
+    box-shadow: var(--shadow-purple);
+}
+
+.contact-link-icon {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 3rem;
+}
+
+.footer-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.footer-text a {
+    color: var(--accent-cyan);
+}
+
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+    }
+
+    .contact-link {
+        justify-content: center;
+    }
+}
