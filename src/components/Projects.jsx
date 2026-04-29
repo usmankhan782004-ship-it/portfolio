@@ -74,7 +74,7 @@ export default function Projects() {
                 <p className="section-label animate-on-scroll">Portfolio</p>
                 <h2 className="section-title animate-on-scroll">Featured Projects</h2>
                 <p className="section-subtitle animate-on-scroll">
-                    Real-world applications spanning AI diagnostics, security platforms, and intelligent learning systems.
+                    Real-world applications spanning AI diagnostics, security platforms, e-commerce, and intelligent learning systems.
                 </p>
 
                 <div className="projects-grid">
@@ -88,14 +88,29 @@ export default function Projects() {
                                 <div className={`project-icon project-icon--${i}`}>
                                     {project.icon}
                                 </div>
-                                <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-link"
-                                >
-                                    ↗ GitHub
-                                </a>
+                                <div className="project-links">
+                                    {project.links?.map((link) => (
+                                        <a
+                                            key={link.href}
+                                            href={link.href}
+                                            target={link.href.startsWith('#') ? undefined : '_blank'}
+                                            rel={link.href.startsWith('#') ? undefined : 'noopener noreferrer'}
+                                            className={`project-link project-link--${link.variant}`}
+                                        >
+                                            ↗ {link.label}
+                                        </a>
+                                    ))}
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="project-link"
+                                        >
+                                            ↗ GitHub
+                                        </a>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="project-body">

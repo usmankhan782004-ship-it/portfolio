@@ -1,0 +1,59 @@
+/* ============================================
+   NEURAL BACKDROP
+   ============================================ */
+
+.neural-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.neural-backdrop__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+
+.neural-backdrop__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.16;
+    animation: glowDrift 16s ease-in-out infinite;
+}
+
+.neural-backdrop__glow--cyan {
+    width: 32vw;
+    height: 32vw;
+    top: 10%;
+    right: -8vw;
+    background: rgba(0, 229, 255, 0.65);
+}
+
+.neural-backdrop__glow--purple {
+    width: 28vw;
+    height: 28vw;
+    bottom: 8%;
+    left: -6vw;
+    background: rgba(168, 85, 247, 0.55);
+    animation-delay: -8s;
+}
+
+@keyframes glowDrift {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate3d(-16px, 20px, 0) scale(1.04);
+    }
+
+    66% {
+        transform: translate3d(20px, -14px, 0) scale(0.97);
+    }
+}

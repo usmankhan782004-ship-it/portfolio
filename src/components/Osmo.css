@@ -1,0 +1,139 @@
+/* ============================================
+   OSMO SECTION
+   ============================================ */
+
+.osmo {
+    padding: var(--section-padding);
+}
+
+.osmo-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.5rem;
+}
+
+.osmo-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1.75rem;
+    min-height: 100%;
+}
+
+.osmo-card--accent {
+    border-color: rgba(0, 229, 255, 0.18);
+}
+
+.osmo-orbit {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 180px;
+    height: 180px;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.osmo-orbit span {
+    position: absolute;
+    inset: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    transform: translate(-50%, -50%);
+    animation: orbitPulse 8s linear infinite;
+}
+
+.osmo-orbit span:nth-child(2) {
+    inset: 35%;
+    animation-duration: 11s;
+    border-color: rgba(168, 85, 247, 0.18);
+}
+
+.osmo-orbit span:nth-child(3) {
+    inset: 20%;
+    animation-duration: 14s;
+    border-color: rgba(34, 211, 238, 0.14);
+}
+
+.osmo-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.osmo-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 62ch;
+    margin-bottom: 1.25rem;
+}
+
+.osmo-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.osmo-pill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.06);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+.osmo-list {
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+    margin: 1rem 0 1.25rem;
+}
+
+.osmo-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.osmo-dot {
+    width: 9px;
+    height: 9px;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+.osmo-callout {
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(168, 85, 247, 0.08));
+    border: 1px solid rgba(0, 229, 255, 0.14);
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+@keyframes orbitPulse {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+    .osmo-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .osmo-orbit {
+        width: 140px;
+        height: 140px;
+    }
+}
