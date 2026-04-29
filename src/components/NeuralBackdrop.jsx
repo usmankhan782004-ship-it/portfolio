@@ -57,20 +57,21 @@ export default function NeuralBackdrop() {
             context.clearRect(0, 0, width, height)
 
             const scrollFactor = window.scrollY * 0.00045
+            const pageDepth = window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
             const time = performance.now() * 0.00015
             const cameraDistance = 3.2
             const points = []
 
             context.save()
             context.translate(width / 2, height / 2)
-            context.rotate(Math.sin(scrollFactor * 0.8) * 0.12)
+            context.rotate(Math.sin(scrollFactor * 0.8) * 0.16 + pageDepth * 0.35)
             context.translate(-width / 2, -height / 2)
 
             for (const node of nodes) {
                 const x = node.x * width * 0.42
                 const y = node.y * height * 0.34
                 const zWave = Math.sin(time + node.zSeed + scrollFactor * 3.4) * 0.9
-                const depth = zWave + Math.cos(scrollFactor * 1.2 + node.y * 1.8) * 0.45
+                const depth = zWave + Math.cos(scrollFactor * 1.2 + node.y * 1.8) * 0.45 + pageDepth * 0.5
                 const projected = project(x, y + depth * 40, depth, cameraDistance)
                 points.push({ ...projected, depth, node })
             }
@@ -84,21 +85,26 @@ export default function NeuralBackdrop() {
                     const distance = Math.hypot(distanceX, distanceY)
                     if (distance > 180) continue
 
-                    const alpha = Math.max(0, 0.16 - distance / 1200)
+                    const alpha = Math.max(0, 0.24 - distance / 900)
                     context.beginPath()
                     context.moveTo(a.x, a.y)
                     context.lineTo(b.x, b.y)
-                    context.strokeStyle = `rgba(0, 229, 255, ${alpha})`
-                    context.lineWidth = 1
+                    context.strokeStyle = a.depth + b.depth > 0 ? `rgba(0, 229, 255, ${alpha})` : `rgba(168, 85, 247, ${alpha * 0.8})`
+                    context.lineWidth = 1.2
                     context.stroke()
                 }
             }
 
             for (const point of points) {
-                const radius = 1.4 + point.node.weight * 1.8
+                const radius = 1.8 + point.node.weight * 2.1
                 context.beginPath()
                 context.arc(point.x, point.y, radius * point.scale, 0, Math.PI * 2)
-                context.fillStyle = point.depth > 0 ? 'rgba(0, 229, 255, 0.85)' : 'rgba(168, 85, 247, 0.8)'
+                context.fillStyle = point.depth > 0 ? 'rgba(0, 229, 255, 0.95)' : 'rgba(168, 85, 247, 0.88)'
+                context.fill()
+
+                context.beginPath()
+                context.arc(point.x, point.y, radius * point.scale * 2.2, 0, Math.PI * 2)
+                context.fillStyle = point.depth > 0 ? 'rgba(0, 229, 255, 0.05)' : 'rgba(168, 85, 247, 0.04)'
                 context.fill()
             }
 
@@ -119,6 +125,7 @@ export default function NeuralBackdrop() {
 
     return (
         <div className="neural-backdrop" aria-hidden="true">
+            <div className="neural-backdrop__grid" />
             <canvas ref={canvasRef} className="neural-backdrop__canvas" />
             <div className="neural-backdrop__glow neural-backdrop__glow--cyan" />
             <div className="neural-backdrop__glow neural-backdrop__glow--purple" />
