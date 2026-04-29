@@ -72,6 +72,16 @@ export default function Contact() {
                             {'<'}passion{' />'}
                         </a>
                     </p>
+                    <p className="footer-showcase">
+                        Currently building a website for my friend’s software house:{' '}
+                        <a
+                            href="https://nexora-techs.netlify.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Nexora Techs
+                        </a>
+                    </p>
                 </footer>
             </div>
         </section>

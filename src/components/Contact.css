@@ -108,6 +108,21 @@
     color: var(--accent-cyan);
 }
 
+.footer-showcase {
+    margin-top: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+}
+
+.footer-showcase a {
+    color: var(--accent-purple);
+}
+
+.footer-showcase a:hover {
+    color: var(--accent-cyan);
+}
+
 @media (max-width: 480px) {
     .contact-card {
         padding: 2rem 1.5rem;
