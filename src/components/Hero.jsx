@@ -9,6 +9,12 @@ const ROLES = [
     'Problem Solver',
 ]
 
+const HERO_STATS = [
+    { value: '3+', label: 'Live SaaS products' },
+    { value: '1', label: 'Flagship AI system' },
+    { value: '4', label: 'Core domains' },
+]
+
 export default function Hero() {
     const canvasRef = useRef(null)
     const mouseRef = useRef({ x: 0, y: 0 })
@@ -181,6 +187,15 @@ export default function Hero() {
                     <a href="#contact" className="hero-btn hero-btn--secondary" onClick={e => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
                         Get In Touch →
                     </a>
+                </div>
+
+                <div className="hero-metrics">
+                    {HERO_STATS.map((stat) => (
+                        <div key={stat.label} className="hero-metric glass">
+                            <div className="hero-metric-value">{stat.value}</div>
+                            <div className="hero-metric-label">{stat.label}</div>
+                        </div>
+                    ))}
                 </div>
 
                 <div className="hero-status">

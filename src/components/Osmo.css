@@ -12,6 +12,73 @@
     gap: 1.5rem;
 }
 
+.osmo-spotlight {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-color: rgba(0, 229, 255, 0.22);
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(168, 85, 247, 0.08));
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.osmo-spotlight-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.osmo-spotlight-badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.16);
+}
+
+.osmo-spotlight-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+}
+
+.osmo-spotlight-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 70ch;
+}
+
+.osmo-spotlight-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+}
+
+.osmo-spotlight-stat {
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    background: rgba(6, 6, 13, 0.32);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.osmo-spotlight-stat-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.osmo-spotlight-stat-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
 .osmo-card {
     position: relative;
     overflow: hidden;
@@ -128,6 +195,10 @@
 }
 
 @media (max-width: 900px) {
+    .osmo-spotlight {
+        grid-template-columns: 1fr;
+    }
+
     .osmo-layout {
         grid-template-columns: 1fr;
     }

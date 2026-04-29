@@ -22,3 +22,45 @@
     position: relative;
     z-index: 1;
 }
+
+.app section[id] {
+    position: relative;
+    isolation: isolate;
+}
+
+.app section[id] > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.app section + section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(100%, var(--container-max));
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.22), rgba(168, 85, 247, 0.18), transparent);
+    opacity: 0.65;
+}
+
+.app section[id]::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 320px;
+    height: 320px;
+    transform: translate3d(-50%, calc(var(--scroll-offset, 0px) * -0.02), 0);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+    filter: blur(50px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.app section[id]:nth-of-type(even)::after {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, transparent 70%);
+}
