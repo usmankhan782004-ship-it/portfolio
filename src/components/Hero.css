@@ -71,7 +71,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
     align-items: center;
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 .hero-copy {
@@ -80,7 +80,7 @@
 
 .hero-scene {
     position: relative;
-    min-height: 470px;
+    min-height: 430px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +89,7 @@
 
 .hero-core {
     position: relative;
-    width: min(100%, 380px);
+    width: min(100%, 360px);
     aspect-ratio: 1;
     border-radius: 32px;
     display: grid;
@@ -102,7 +102,7 @@
         linear-gradient(145deg, rgba(17, 17, 34, 0.95), rgba(8, 8, 20, 0.78));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 26px 70px rgba(0, 0, 0, 0.36);
+        0 24px 60px rgba(0, 0, 0, 0.32);
     transform: translate3d(0, calc(var(--scroll-progress, 0) * 8px), 0) rotateX(8deg) rotateY(-10deg);
 }
 
@@ -157,8 +157,8 @@
 }
 
 .hero-core-orb {
-    width: 160px;
-    height: 160px;
+    width: 148px;
+    height: 148px;
     display: grid;
     place-items: center;
     animation: coreFloat 7s ease-in-out infinite;
@@ -190,8 +190,8 @@
 }
 
 .hero-core-panel {
-    width: 170px;
-    padding: 0.8rem 0.9rem;
+    width: 158px;
+    padding: 0.75rem 0.85rem;
     border-radius: 18px;
     background: rgba(6, 6, 13, 0.48);
     border: 1px solid rgba(148, 163, 184, 0.12);
@@ -238,7 +238,7 @@
 }
 
 .hero-signal-item {
-    padding: 0.7rem 0.75rem;
+    padding: 0.65rem 0.7rem;
     border-radius: 14px;
     background: rgba(17, 17, 34, 0.66);
     border: 1px solid rgba(148, 163, 184, 0.1);
@@ -377,7 +377,7 @@
     color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.8;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     opacity: 0;
     animation: fadeInUp 0.6s var(--ease-out-expo) 0.8s forwards;
 }
@@ -395,7 +395,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     max-width: 620px;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     opacity: 0;
     animation: fadeInUp 0.6s var(--ease-out-expo) 1.05s forwards;
 }
@@ -462,7 +462,7 @@
 
 /* Status indicator */
 .hero-status {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -520,21 +520,63 @@
     .hero {
         padding-top: 100px;
         min-height: auto;
-        padding-bottom: 4rem;
+        padding-bottom: 2.5rem;
         align-items: flex-start;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .hero-scene {
-        min-height: 340px;
+        min-height: 220px;
     }
 
     .hero-core {
-        transform: translate3d(0, calc(var(--scroll-progress, 0) * 5px), 0) rotateX(8deg) rotateY(-6deg);
+        width: min(100%, 260px);
+        transform: translate3d(0, calc(var(--scroll-progress, 0) * 3px), 0) rotateX(7deg) rotateY(-5deg);
+    }
+
+    .hero-core-orb {
+        width: 110px;
+        height: 110px;
+    }
+
+    .hero-core-panel {
+        width: 120px;
+        padding: 0.55rem 0.6rem;
+        border-radius: 14px;
+    }
+
+    .hero-core-panel-value {
+        font-size: 0.72rem;
+    }
+
+    .hero-signal {
+        display: none;
+    }
+
+    .hero-core-panel--top {
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .hero-core-panel--bottom {
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+
+    .hero-orb--cyan {
+        width: 280px;
+        height: 280px;
+        right: -10%;
+    }
+
+    .hero-orb--purple {
+        width: 240px;
+        height: 240px;
+        left: -8%;
     }
 
     .hero-actions {
@@ -547,9 +589,18 @@
 
     .hero-metrics {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
 
-    .hero-signal {
-        grid-template-columns: 1fr;
+    .hero-metric {
+        padding: 0.85rem 0.95rem;
+    }
+
+    .hero-greeting {
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+        margin-bottom: 1.1rem;
     }
 }
