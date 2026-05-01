@@ -52,12 +52,25 @@ export default function Osmo() {
                 </p>
 
                 <div className="osmo-spotlight glass animate-on-scroll">
+                    <div className="osmo-spotlight-orb" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                    </div>
+
                     <div className="osmo-spotlight-copy">
                         <span className="osmo-spotlight-badge">Flagship system</span>
                         <h3 className="osmo-spotlight-title">A control layer for research, outreach, and execution</h3>
                         <p className="osmo-spotlight-text">
                             Osmo is the most ambitious system in the portfolio: it gathers context, turns it into action, and keeps the user in charge from discovery through execution.
                         </p>
+
+                        <div className="osmo-spotlight-flow" aria-hidden="true">
+                            <span>Research</span>
+                            <span>Extract</span>
+                            <span>Draft</span>
+                            <span>Chain</span>
+                        </div>
                     </div>
 
                     <div className="osmo-spotlight-stats">
@@ -88,6 +101,16 @@ export default function Osmo() {
                                     {phase}
                                 </span>
                             ))}
+                        </div>
+
+                        <div className="osmo-mini-panel" aria-hidden="true">
+                            <span className="osmo-mini-panel-label">Live state</span>
+                            <div className="osmo-mini-panel-bars">
+                                <span />
+                                <span />
+                                <span />
+                                <span />
+                            </div>
                         </div>
                     </div>
 

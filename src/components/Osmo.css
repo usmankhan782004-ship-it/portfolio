@@ -13,6 +13,7 @@
 }
 
 .osmo-spotlight {
+    position: relative;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 1.5rem;
@@ -21,12 +22,53 @@
     border-color: rgba(0, 229, 255, 0.22);
     background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(168, 85, 247, 0.08));
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.osmo-spotlight-orb {
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(0.2px);
+    opacity: 0.95;
+    animation: orbDrift 10s ease-in-out infinite;
+}
+
+.osmo-spotlight-orb span {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(0, 229, 255, 0.3) 18%, rgba(168, 85, 247, 0.22) 42%, rgba(239, 68, 68, 0.16) 67%, rgba(34, 197, 94, 0.12) 84%, rgba(6, 6, 13, 0.05) 100%);
+    box-shadow:
+        inset 0 0 30px rgba(255, 255, 255, 0.08),
+        0 0 28px rgba(0, 229, 255, 0.18);
+    mix-blend-mode: screen;
+}
+
+.osmo-spotlight-orb span:nth-child(2) {
+    inset: 16px;
+    background: radial-gradient(circle at 38% 36%, rgba(255, 255, 255, 0.85) 0%, rgba(168, 85, 247, 0.34) 24%, rgba(239, 68, 68, 0.22) 52%, rgba(34, 197, 94, 0.16) 78%, transparent 100%);
+    filter: blur(1px);
+    animation: orbPulse 6s ease-in-out infinite;
+}
+
+.osmo-spotlight-orb span:nth-child(3) {
+    inset: 32px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(0, 229, 255, 0.2) 26%, rgba(168, 85, 247, 0.24) 48%, rgba(239, 68, 68, 0.18) 72%, rgba(34, 197, 94, 0.14) 100%);
+    filter: blur(8px);
+    animation: orbHue 8s linear infinite;
 }
 
 .osmo-spotlight-copy {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
+    position: relative;
+    z-index: 1;
 }
 
 .osmo-spotlight-badge {
@@ -58,6 +100,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.85rem;
+    position: relative;
+    z-index: 1;
 }
 
 .osmo-spotlight-stat {
@@ -88,6 +132,38 @@
 .osmo-spotlight-stat-label {
     font-size: 0.78rem;
     color: var(--text-secondary);
+}
+
+.osmo-spotlight-flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.osmo-spotlight-flow span {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(6, 6, 13, 0.24);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    animation: flowGlow 5s ease-in-out infinite;
+}
+
+.osmo-spotlight-flow span:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.osmo-spotlight-flow span:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.osmo-spotlight-flow span:nth-child(4) {
+    animation-delay: 1.8s;
 }
 
 .osmo-card {
@@ -163,6 +239,53 @@
     transition: transform 0.3s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
 }
 
+.osmo-mini-panel {
+    margin-top: 1rem;
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    background: rgba(6, 6, 13, 0.28);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.osmo-mini-panel-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+}
+
+.osmo-mini-panel-bars {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+    align-items: end;
+}
+
+.osmo-mini-panel-bars span {
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.25), rgba(168, 85, 247, 0.35), rgba(239, 68, 68, 0.28), rgba(34, 197, 94, 0.3));
+    animation: barPulse 4.8s ease-in-out infinite;
+}
+
+.osmo-mini-panel-bars span:nth-child(2) {
+    height: 18px;
+    animation-delay: -0.7s;
+}
+
+.osmo-mini-panel-bars span:nth-child(3) {
+    height: 14px;
+    animation-delay: -1.4s;
+}
+
+.osmo-mini-panel-bars span:nth-child(4) {
+    height: 22px;
+    animation-delay: -2.1s;
+}
+
 .osmo-list {
     list-style: none;
     display: grid;
@@ -214,6 +337,76 @@
     }
 }
 
+@keyframes orbDrift {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate3d(-6px, 4px, 0) scale(1.03);
+    }
+
+    50% {
+        transform: translate3d(-2px, -5px, 0) scale(0.98);
+    }
+
+    75% {
+        transform: translate3d(6px, 2px, 0) scale(1.02);
+    }
+}
+
+@keyframes orbPulse {
+    0%,
+    100% {
+        opacity: 0.82;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes orbHue {
+    0% {
+        filter: hue-rotate(0deg) blur(8px);
+    }
+
+    100% {
+        filter: hue-rotate(360deg) blur(8px);
+    }
+}
+
+@keyframes flowGlow {
+    0%,
+    100% {
+        border-color: rgba(148, 163, 184, 0.12);
+        color: var(--text-secondary);
+        transform: translateY(0);
+    }
+
+    50% {
+        border-color: rgba(0, 229, 255, 0.22);
+        color: var(--accent-cyan);
+        transform: translateY(-1px);
+    }
+}
+
+@keyframes barPulse {
+    0%,
+    100% {
+        transform: scaleY(0.8);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scaleY(1.1);
+        opacity: 1;
+    }
+}
+
 @keyframes orbitPulse {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -236,5 +429,39 @@
     .osmo-orbit {
         width: 140px;
         height: 140px;
+    }
+
+    .osmo-spotlight-orb {
+        width: 84px;
+        height: 84px;
+        right: 0.75rem;
+        top: 0.75rem;
+    }
+
+    .osmo-spotlight-flow {
+        gap: 0.4rem;
+    }
+
+    .osmo-spotlight-flow span {
+        font-size: 0.62rem;
+    }
+
+    .osmo-mini-panel-bars span:nth-child(2) {
+        height: 15px;
+    }
+
+    .osmo-mini-panel-bars span:nth-child(4) {
+        height: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .osmo-spotlight-orb,
+    .osmo-spotlight-orb span,
+    .osmo-spotlight-stat,
+    .osmo-spotlight-flow span,
+    .osmo-mini-panel-bars span,
+    .osmo-orbit span {
+        animation: none !important;
     }
 }
