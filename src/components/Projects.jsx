@@ -49,6 +49,15 @@ const PROJECTS = [
     },
 ]
 
+const FEATURED_WORK = {
+    title: 'Osmo Control Plane',
+    eyebrow: 'Featured Work',
+    description:
+        'A guided AI operator layer for research, outreach, and tool chaining. Built to feel deliberate, not generic, with a clear workflow and strong control points.',
+    bullets: ['Automation layer', 'Research-first workflow', 'Moderated execution'],
+    cta: { label: 'Explore Osmo', href: '#osmo' },
+}
+
 export default function Projects() {
     const sectionRef = useRef(null)
 
@@ -76,6 +85,42 @@ export default function Projects() {
                 <p className="section-subtitle animate-on-scroll">
                     Real-world applications spanning AI diagnostics, security platforms, e-commerce, and intelligent learning systems.
                 </p>
+
+                <div className="project-spotlight glass animate-on-scroll">
+                    <div className="project-spotlight-copy">
+                        <span className="project-spotlight-eyebrow">{FEATURED_WORK.eyebrow}</span>
+                        <h3 className="project-spotlight-title">{FEATURED_WORK.title}</h3>
+                        <p className="project-spotlight-text">{FEATURED_WORK.description}</p>
+
+                        <div className="project-spotlight-bullets">
+                            {FEATURED_WORK.bullets.map((bullet) => (
+                                <span key={bullet} className="project-spotlight-bullet">{bullet}</span>
+                            ))}
+                        </div>
+
+                        <a href={FEATURED_WORK.cta.href} className="project-spotlight-cta">
+                            {FEATURED_WORK.cta.label} →
+                        </a>
+                    </div>
+
+                    <div className="project-spotlight-visual" aria-hidden="true">
+                        <div className="project-spotlight-orbit project-spotlight-orbit--outer" />
+                        <div className="project-spotlight-orbit project-spotlight-orbit--middle" />
+                        <div className="project-spotlight-orbit project-spotlight-orbit--inner" />
+                        <div className="project-spotlight-card">
+                            <div className="project-spotlight-card-top">
+                                <span>Signal</span>
+                                <strong>Live</strong>
+                            </div>
+                            <div className="project-spotlight-card-value">AI orchestration</div>
+                            <div className="project-spotlight-bars">
+                                <span />
+                                <span />
+                                <span />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="projects-grid">
                     {PROJECTS.map((project, i) => (

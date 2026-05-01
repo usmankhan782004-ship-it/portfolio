@@ -15,6 +15,12 @@ const HERO_STATS = [
     { value: '4', label: 'Core domains' },
 ]
 
+const HERO_SIGNAL = [
+    { label: 'Shipping', value: 'Live products' },
+    { label: 'Focus', value: 'AI + automation' },
+    { label: 'Style', value: 'Cyber editorial' },
+]
+
 export default function Hero() {
     const canvasRef = useRef(null)
     const mouseRef = useRef({ x: 0, y: 0 })
@@ -160,47 +166,83 @@ export default function Hero() {
             <div className="hero-orb hero-orb--purple" />
 
             <div className="container hero-content">
-                <p className="hero-greeting">
-                    {'> '}hello_world<span className="hero-cursor">&nbsp;</span>
-                </p>
+                <div className="hero-copy">
+                    <p className="hero-greeting">
+                        {'> '}hello_world<span className="hero-cursor">&nbsp;</span>
+                    </p>
 
-                <h1 className="hero-name">
-                    Muhammad<br />
-                    <span className="hero-name-highlight">Usman Khan</span>
-                </h1>
+                    <h1 className="hero-name">
+                        Muhammad<br />
+                        <span className="hero-name-highlight">Usman Khan</span>
+                    </h1>
 
-                <div className="hero-title">
-                    <span className="typewriter-text">{displayText}</span>
-                    <span className="typewriter-cursor">|</span>
+                    <div className="hero-title">
+                        <span className="typewriter-text">{displayText}</span>
+                        <span className="typewriter-cursor">|</span>
+                    </div>
+
+                    <p className="hero-description">
+                        Building resilient infrastructure, intelligent systems, and secure solutions.
+                        I bridge the gap between development and operations while exploring the frontiers
+                        of artificial intelligence and ethical hacking.
+                    </p>
+
+                    <div className="hero-actions">
+                        <a href="#projects" className="hero-btn hero-btn--primary" onClick={e => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                            <span>⬡</span> View Projects
+                        </a>
+                        <a href="#contact" className="hero-btn hero-btn--secondary" onClick={e => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                            Get In Touch →
+                        </a>
+                    </div>
+
+                    <div className="hero-metrics">
+                        {HERO_STATS.map((stat) => (
+                            <div key={stat.label} className="hero-metric glass">
+                                <div className="hero-metric-value">{stat.value}</div>
+                                <div className="hero-metric-label">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="hero-status">
+                        <span className="hero-status-dot" />
+                        Available for collaboration & opportunities
+                    </div>
                 </div>
 
-                <p className="hero-description">
-                    Building resilient infrastructure, intelligent systems, and secure solutions.
-                    I bridge the gap between development and operations while exploring the frontiers
-                    of artificial intelligence and ethical hacking.
-                </p>
-
-                <div className="hero-actions">
-                    <a href="#projects" className="hero-btn hero-btn--primary" onClick={e => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                        <span>⬡</span> View Projects
-                    </a>
-                    <a href="#contact" className="hero-btn hero-btn--secondary" onClick={e => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
-                        Get In Touch →
-                    </a>
-                </div>
-
-                <div className="hero-metrics">
-                    {HERO_STATS.map((stat) => (
-                        <div key={stat.label} className="hero-metric glass">
-                            <div className="hero-metric-value">{stat.value}</div>
-                            <div className="hero-metric-label">{stat.label}</div>
+                <div className="hero-scene">
+                    <div className="hero-core glass">
+                        <div className="hero-core-rings" aria-hidden="true">
+                            <span />
+                            <span />
+                            <span />
                         </div>
-                    ))}
-                </div>
+                        <div className="hero-core-orb" aria-hidden="true">
+                            <span className="hero-core-orb-shell" />
+                            <span className="hero-core-orb-shell hero-core-orb-shell--inner" />
+                            <span className="hero-core-orb-glow" />
+                        </div>
 
-                <div className="hero-status">
-                    <span className="hero-status-dot" />
-                    Available for collaboration & opportunities
+                        <div className="hero-core-panel hero-core-panel--top">
+                            <div className="hero-core-panel-label">Systems online</div>
+                            <div className="hero-core-panel-value">AI • SaaS • Security</div>
+                        </div>
+
+                        <div className="hero-core-panel hero-core-panel--bottom">
+                            <div className="hero-core-panel-label">Current build</div>
+                            <div className="hero-core-panel-value">Osmo + product portfolio</div>
+                        </div>
+
+                        <div className="hero-signal">
+                            {HERO_SIGNAL.map((item) => (
+                                <div key={item.label} className="hero-signal-item">
+                                    <span>{item.label}</span>
+                                    <strong>{item.value}</strong>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
