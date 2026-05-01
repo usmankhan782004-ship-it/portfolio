@@ -207,7 +207,7 @@
 
 .hero-core-panel--bottom {
     right: 1rem;
-    bottom: 1rem;
+    bottom: 4.5rem;
     transform: translate3d(0, 0, 30px);
 }
 
@@ -668,5 +668,35 @@
 
     .hero-core-panel-value {
         font-size: 0.76rem;
+    }
+
+    .hero-core-panel--bottom {
+        bottom: 4rem;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+    .hero-core {
+        width: min(100%, 420px);
+    }
+
+    .hero-core-panel {
+        width: 140px;
+    }
+
+    .hero-core-panel--bottom {
+        bottom: 4rem;
+    }
+
+    .hero-signal {
+        gap: 0.45rem;
+    }
+
+    .hero-signal-item {
+        padding: 0.5rem 0.55rem;
+    }
+
+    .hero-signal-item strong {
+        font-size: 0.72rem;
     }
 }
