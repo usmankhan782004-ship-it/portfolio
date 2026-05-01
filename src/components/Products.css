@@ -12,6 +12,110 @@
     gap: 1.5rem;
 }
 
+.products-spotlight {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+    gap: 1.5rem;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(0, 229, 255, 0.08), transparent 42%),
+        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.08), transparent 40%),
+        var(--bg-glass);
+    border-color: rgba(0, 229, 255, 0.16);
+}
+
+.products-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 35%);
+    pointer-events: none;
+}
+
+.products-spotlight-copy,
+.products-spotlight-metrics {
+    position: relative;
+    z-index: 1;
+}
+
+.products-spotlight-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.products-spotlight-eyebrow {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.16);
+}
+
+.products-spotlight-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+}
+
+.products-spotlight-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 64ch;
+}
+
+.products-spotlight-flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.products-spotlight-flow span {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(6, 6, 13, 0.24);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.products-spotlight-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+}
+
+.products-spotlight-metric {
+    padding: 1rem 1.05rem;
+    border-radius: 14px;
+    background: rgba(6, 6, 13, 0.28);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    transition: transform 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
+}
+
+.products-spotlight-metric-value {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.products-spotlight-metric-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
 .product-card {
     padding: 1.5rem;
     display: flex;
@@ -155,6 +259,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+    .products-spotlight-metric:hover {
+        transform: translateY(-2px);
+        border-color: rgba(0, 229, 255, 0.18);
+        box-shadow: var(--shadow-cyan);
+    }
+
     .product-card:hover .product-icon {
         transform: translateY(-4px) scale(1.04);
     }
@@ -180,6 +290,10 @@
 }
 
 @media (max-width: 768px) {
+    .products-spotlight {
+        grid-template-columns: 1fr;
+    }
+
     .products-grid {
         grid-template-columns: 1fr;
     }
@@ -191,5 +305,15 @@
 
     .product-link {
         align-self: flex-start;
+    }
+
+    .products-spotlight-metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .products-spotlight-metrics {
+        grid-template-columns: 1fr;
     }
 }

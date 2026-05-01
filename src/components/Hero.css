@@ -450,6 +450,17 @@
     transition: all var(--transition-base);
     border: none;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.12) 45%, transparent 65%);
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-out-expo);
 }
 
 .hero-btn--primary {
@@ -462,6 +473,11 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(0, 229, 255, 0.35);
     color: var(--bg-primary);
+}
+
+.hero-btn--primary:hover::before,
+.hero-btn--secondary:hover::before {
+    transform: translateX(120%);
 }
 
 .hero-btn--secondary {

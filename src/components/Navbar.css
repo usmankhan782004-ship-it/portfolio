@@ -104,6 +104,10 @@
     animation: navPulse 2.6s ease-in-out infinite;
 }
 
+.navbar-links a.active {
+    box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.08);
+}
+
 /* Mobile hamburger */
 .navbar-toggle {
     display: none;

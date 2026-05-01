@@ -23,6 +23,8 @@ const OSMO_HIGHLIGHTS = [
     { value: 'Research-first', label: 'Web context' },
 ]
 
+const OSMO_SIGNAL = ['Research', 'Collect', 'Draft', 'Route', 'Execute']
+
 export default function Osmo() {
     const sectionRef = useRef(null)
 
@@ -70,6 +72,14 @@ export default function Osmo() {
                             <span>Extract</span>
                             <span>Draft</span>
                             <span>Chain</span>
+                        </div>
+
+                        <div className="osmo-spotlight-rail" aria-hidden="true">
+                            {OSMO_SIGNAL.map((step, index) => (
+                                <span key={step} style={{ '--step-index': index }}>
+                                    {step}
+                                </span>
+                            ))}
                         </div>
                     </div>
 
