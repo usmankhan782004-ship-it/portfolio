@@ -80,7 +80,7 @@
 
 .hero-scene {
     position: relative;
-    min-height: 430px;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +89,7 @@
 
 .hero-core {
     position: relative;
-    width: min(100%, 360px);
+    width: min(100%, 460px);
     aspect-ratio: 1;
     border-radius: 32px;
     display: grid;
@@ -190,8 +190,8 @@
 }
 
 .hero-core-panel {
-    width: 158px;
-    padding: 0.75rem 0.85rem;
+    width: 146px;
+    padding: 0.68rem 0.75rem;
     border-radius: 18px;
     background: rgba(6, 6, 13, 0.48);
     border: 1px solid rgba(148, 163, 184, 0.12);
@@ -221,7 +221,7 @@
 }
 
 .hero-core-panel-value {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     line-height: 1.45;
     color: var(--text-primary);
     font-weight: 600;
@@ -233,32 +233,35 @@
     bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.75rem;
+    gap: 0.55rem;
     transform: translate3d(0, 0, 26px);
 }
 
 .hero-signal-item {
-    padding: 0.65rem 0.7rem;
+    padding: 0.55rem 0.6rem;
     border-radius: 14px;
     background: rgba(17, 17, 34, 0.66);
     border: 1px solid rgba(148, 163, 184, 0.1);
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    min-width: 0;
 }
 
 .hero-signal-item span {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.56rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
 
 .hero-signal-item strong {
-    font-size: 0.82rem;
+    font-size: 0.75rem;
+    line-height: 1.15;
     color: var(--text-primary);
     font-weight: 700;
+    word-break: break-word;
 }
 
 @keyframes ringPulse {
@@ -631,5 +634,39 @@
 
     .hero-title {
         margin-bottom: 1.1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-copy {
+        max-width: 100%;
+    }
+
+    .hero-scene {
+        min-height: 420px;
+        order: 2;
+    }
+
+    .hero-core {
+        width: min(100%, 420px);
+        margin-inline: auto;
+        transform: translate3d(0, calc(var(--scroll-progress, 0) * 4px), 0) rotateX(7deg) rotateY(-7deg);
+    }
+
+    .hero-signal {
+        gap: 0.45rem;
+    }
+
+    .hero-core-panel {
+        width: 138px;
+    }
+
+    .hero-core-panel-value {
+        font-size: 0.76rem;
     }
 }
