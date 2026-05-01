@@ -530,76 +530,62 @@
     }
 
     .hero-scene {
-        min-height: 220px;
+        min-height: 260px;
         order: 2;
+        width: 100%;
     }
 
     .hero-core {
-        width: min(100%, 260px);
-        height: 260px;
+        width: min(100%, 290px);
+        height: 290px;
         transform: translate3d(0, calc(var(--scroll-progress, 0) * 3px), 0) rotateX(7deg) rotateY(-5deg);
         border-radius: 24px;
     }
 
     .hero-core-orb {
-        width: 110px;
-        height: 110px;
+        width: 122px;
+        height: 122px;
     }
 
     .hero-core-panel {
-        width: 120px;
-        padding: 0.55rem 0.6rem;
+        width: 132px;
+        padding: 0.6rem 0.65rem;
         border-radius: 14px;
     }
 
     .hero-core-panel-value {
-        font-size: 0.72rem;
+        font-size: 0.74rem;
     }
 
     .hero-signal {
         display: none;
     }
 
-    .hero-core-panel--top,
     .hero-core-panel--bottom {
+        display: none;
+    }
+
+    .hero-core-panel--top {
+        top: 0.7rem;
+        left: 0.7rem;
         transform: none;
     }
 
-    .hero-core-panel--top {
-        top: 0.6rem;
-        left: 0.6rem;
-    }
-
-    .hero-core-panel--bottom {
-        right: 0.6rem;
-        bottom: 0.6rem;
-    }
-
     .hero-core-orb-glow {
-        inset: -18px;
-        filter: blur(18px);
+        inset: -14px;
+        filter: blur(16px);
     }
 
     .hero-core-rings span {
-        inset: 18%;
+        inset: 16%;
     }
 
     .hero-core-rings span:nth-child(2) {
-        inset: 30%;
+        inset: 28%;
     }
 
     .hero-core-rings span:nth-child(3) {
-        inset: 42%;
-    }
-
-    .hero-core-panel--top {
-        top: 0.6rem;
-        left: 0.6rem;
-    }
-
-    .hero-core-panel--bottom {
-        right: 0.6rem;
-        bottom: 0.6rem;
+        inset: 40%;
     }
 
     .hero-orb--cyan {
@@ -629,6 +615,10 @@
 
     .hero-metric {
         padding: 0.85rem 0.95rem;
+    }
+
+    .hero-status {
+        margin-top: 1.25rem;
     }
 
     .hero-copy {
