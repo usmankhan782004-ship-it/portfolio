@@ -115,33 +115,66 @@
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+.navbar-backdrop {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
     .navbar-toggle {
         display: flex;
     }
 
     .navbar-links {
         position: fixed;
-        top: 72px;
-        left: 0;
+        top: 0;
         right: 0;
+        left: auto;
+        width: min(82vw, 320px);
+        height: 100vh;
         background: rgba(6, 6, 13, 0.95);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 1.5rem;
-        gap: 0.5rem;
-        border-bottom: 1px solid var(--border-subtle);
-        transform: translateY(-120%);
+        padding: 5.75rem 1rem 1.25rem;
+        gap: 0.65rem;
+        border-left: 1px solid var(--border-subtle);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.35);
+        transform: translateX(105%);
         transition: transform var(--transition-base);
+        justify-content: flex-start;
+        align-items: stretch;
+        overflow-y: auto;
+        z-index: 1001;
     }
 
     .navbar-links.open {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .navbar-links a {
         width: 100%;
         padding: 0.75rem 1rem;
         font-size: 1rem;
+    }
+
+    .navbar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        border: none;
+        background: rgba(6, 6, 13, 0.45);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-base);
+        z-index: 1000;
+    }
+
+    .navbar-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
     }
 }

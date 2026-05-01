@@ -18,6 +18,8 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false)
 
     useEffect(() => {
+        document.body.style.overflow = mobileOpen ? 'hidden' : ''
+
         const handleScroll = () => setScrolled(window.scrollY > 50)
 
         const observer = new IntersectionObserver(
@@ -36,10 +38,11 @@ export default function Navbar() {
 
         window.addEventListener('scroll', handleScroll)
         return () => {
+            document.body.style.overflow = ''
             window.removeEventListener('scroll', handleScroll)
             sections.forEach((s) => observer.unobserve(s))
         }
-    }, [])
+    }, [mobileOpen])
 
     const handleClick = (e, href) => {
         e.preventDefault()
@@ -83,6 +86,12 @@ export default function Navbar() {
                     ))}
                 </ul>
             </div>
+
+            <button
+                className={`navbar-backdrop${mobileOpen ? ' open' : ''}`}
+                aria-label="Close navigation menu"
+                onClick={() => setMobileOpen(false)}
+            />
         </nav>
     )
 }
