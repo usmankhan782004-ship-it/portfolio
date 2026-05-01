@@ -24,6 +24,7 @@ const HERO_SIGNAL = [
 export default function Hero() {
     const canvasRef = useRef(null)
     const mouseRef = useRef({ x: 0, y: 0 })
+    const lastFrameRef = useRef(0)
     const [displayText, setDisplayText] = useState('')
     const [roleIndex, setRoleIndex] = useState(0)
     const [isDeleting, setIsDeleting] = useState(false)
@@ -63,12 +64,15 @@ export default function Hero() {
         let animId
 
         const particles = []
-        const PARTICLE_COUNT = 80
-        const CONNECTION_DIST = 120
+        const PARTICLE_COUNT = 48
+        const CONNECTION_DIST = 92
+        const FRAME_INTERVAL = 1000 / 30
 
         const resize = () => {
+            lastFrameRef.current = 0
             canvas.width = canvas.offsetWidth * window.devicePixelRatio
             canvas.height = canvas.offsetHeight * window.devicePixelRatio
+            ctx.setTransform(1, 0, 0, 1, 0, 0)
             ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
         }
         resize()
@@ -78,10 +82,10 @@ export default function Hero() {
             particles.push({
                 x: Math.random() * canvas.offsetWidth,
                 y: Math.random() * canvas.offsetHeight,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
-                radius: Math.random() * 1.5 + 0.5,
-                opacity: Math.random() * 0.5 + 0.2,
+                vx: (Math.random() - 0.5) * 0.26,
+                vy: (Math.random() - 0.5) * 0.26,
+                radius: Math.random() * 1.2 + 0.45,
+                opacity: Math.random() * 0.35 + 0.12,
             })
         }
 
@@ -91,7 +95,13 @@ export default function Hero() {
         }
         canvas.addEventListener('mousemove', handleMouse)
 
-        const animate = () => {
+        const animate = (timestamp) => {
+            if (timestamp - lastFrameRef.current < FRAME_INTERVAL) {
+                animId = requestAnimationFrame(animate)
+                return
+            }
+            lastFrameRef.current = timestamp
+
             const w = canvas.offsetWidth
             const h = canvas.offsetHeight
             ctx.clearRect(0, 0, w, h)
@@ -103,13 +113,13 @@ export default function Hero() {
                 const dist = Math.sqrt(dx * dx + dy * dy)
                 if (dist < 150 && dist > 0) {
                     const force = (150 - dist) / 150
-                    p.vx += (dx / dist) * force * 0.15
-                    p.vy += (dy / dist) * force * 0.15
+                    p.vx += (dx / dist) * force * 0.09
+                    p.vy += (dy / dist) * force * 0.09
                 }
 
                 // Damping
-                p.vx *= 0.99
-                p.vy *= 0.99
+                p.vx *= 0.992
+                p.vy *= 0.992
 
                 p.x += p.vx
                 p.y += p.vy
@@ -133,12 +143,12 @@ export default function Hero() {
                     const dy = particles[i].y - particles[j].y
                     const dist = Math.sqrt(dx * dx + dy * dy)
                     if (dist < CONNECTION_DIST) {
-                        const alpha = (1 - dist / CONNECTION_DIST) * 0.15
+                        const alpha = (1 - dist / CONNECTION_DIST) * 0.09
                         ctx.beginPath()
                         ctx.moveTo(particles[i].x, particles[i].y)
                         ctx.lineTo(particles[j].x, particles[j].y)
                         ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`
-                        ctx.lineWidth = 0.5
+                        ctx.lineWidth = 0.35
                         ctx.stroke()
                     }
                 }
@@ -147,7 +157,7 @@ export default function Hero() {
             animId = requestAnimationFrame(animate)
         }
 
-        animate()
+        animId = requestAnimationFrame(animate)
 
         return () => {
             cancelAnimationFrame(animId)
