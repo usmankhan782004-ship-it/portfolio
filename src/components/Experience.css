@@ -52,11 +52,13 @@
     background: rgba(148, 163, 184, 0.04);
     border: 1px solid var(--border-subtle);
     transition: all var(--transition-base);
+    will-change: transform;
 }
 
 .experience-highlight:hover {
     border-color: var(--border-glow-cyan);
     color: var(--accent-cyan);
+    transform: translateY(-2px);
 }
 
 .experience-highlight-dot {
@@ -131,6 +133,17 @@
 .experience-item:nth-child(even) .experience-item-card:hover {
     border-color: var(--border-glow-purple);
     box-shadow: var(--shadow-purple);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .experience-about:hover .experience-highlight {
+        transform: translateY(-1px);
+    }
+
+    .experience-item:hover .experience-item-dot {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.08);
+    }
 }
 
 .experience-item-period {

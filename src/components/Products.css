@@ -20,6 +20,7 @@
     position: relative;
     overflow: hidden;
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    will-change: transform;
 }
 
 .product-card::after {
@@ -76,6 +77,7 @@
     background: rgba(148, 163, 184, 0.08);
     border: 1px solid var(--border-subtle);
     animation: floatCard 6s ease-in-out infinite;
+    transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
 }
 
 .product-card--cyan .product-icon {
@@ -98,6 +100,7 @@
     border-radius: 999px;
     border: 1px solid var(--border-subtle);
     background: rgba(148, 163, 184, 0.06);
+    transition: transform 0.35s var(--ease-out-expo), color 0.35s var(--ease-out-expo), border-color 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
 }
 
 .product-card--cyan .product-link:hover {
@@ -149,6 +152,20 @@
     border-radius: 999px;
     background: rgba(148, 163, 184, 0.06);
     border: 1px solid var(--border-subtle);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover .product-icon {
+        transform: translateY(-4px) scale(1.04);
+    }
+
+    .product-card:hover .product-link {
+        transform: translateY(-1px);
+    }
+
+    .product-card:hover .product-tag {
+        border-color: rgba(148, 163, 184, 0.18);
+    }
 }
 
 @keyframes floatCard {

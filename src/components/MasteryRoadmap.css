@@ -40,6 +40,7 @@
             rgba(168, 85, 247, 0.1) 50%,
             rgba(244, 114, 182, 0.1));
     filter: blur(4px);
+    animation: lineScan 9s linear infinite;
 }
 
 /* Progress fill bar */
@@ -125,6 +126,16 @@
 .roadmap-node:nth-child(even) .roadmap-card:hover {
     border-color: var(--border-glow-purple);
     box-shadow: var(--shadow-purple);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .roadmap-node:hover .roadmap-dot {
+        transform: scale(1.08);
+    }
+
+    .roadmap-node:hover .roadmap-month {
+        letter-spacing: 0.18em;
+    }
 }
 
 .roadmap-card-title {
@@ -215,5 +226,22 @@
     .roadmap-summary {
         flex-direction: column;
         gap: 0.75rem;
+    }
+}
+
+@keyframes lineScan {
+    0% {
+        opacity: 0.2;
+        transform: translateY(-8%);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: translateY(8%);
     }
 }

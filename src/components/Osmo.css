@@ -65,6 +65,17 @@
     border-radius: 14px;
     background: rgba(6, 6, 13, 0.32);
     border: 1px solid rgba(148, 163, 184, 0.12);
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+}
+
+.osmo-spotlight-stat:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.osmo-spotlight-stat:nth-child(3) {
+    animation-delay: 0.24s;
 }
 
 .osmo-spotlight-stat-value {
@@ -84,6 +95,7 @@
     overflow: hidden;
     padding: 1.75rem;
     min-height: 100%;
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
 }
 
 .osmo-card--accent {
@@ -148,6 +160,7 @@
     background: rgba(148, 163, 184, 0.06);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
+    transition: transform 0.3s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
 }
 
 .osmo-list {
@@ -182,6 +195,23 @@
     border: 1px solid rgba(0, 229, 255, 0.14);
     color: var(--text-primary);
     line-height: 1.7;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .osmo-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .osmo-pill:hover {
+        transform: translateY(-2px);
+        border-color: rgba(0, 229, 255, 0.22);
+        color: var(--accent-cyan);
+    }
+
+    .osmo-spotlight-stat:hover {
+        transform: translate3d(0, -2px, 0);
+        border-color: rgba(0, 229, 255, 0.18);
+    }
 }
 
 @keyframes orbitPulse {

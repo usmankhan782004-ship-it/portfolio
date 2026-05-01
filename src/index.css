@@ -236,11 +236,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translate3d(0, 24px, 0);
   transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+  will-change: opacity, transform;
 }
 
 .animate-on-scroll.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll,
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: none;
+  }
 }

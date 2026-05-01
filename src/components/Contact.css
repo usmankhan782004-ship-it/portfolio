@@ -17,6 +17,7 @@
     padding: 3rem 2.5rem;
     position: relative;
     overflow: hidden;
+    transition: transform 0.4s var(--ease-out-expo), border-color 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
 }
 
 .contact-card::before {
@@ -65,6 +66,7 @@
     border: 1px solid var(--border-subtle);
     transition: all var(--transition-base);
     text-decoration: none;
+    will-change: transform;
 }
 
 .contact-link:hover {
@@ -88,6 +90,18 @@
 
 .contact-link-icon {
     font-size: 1.2rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .contact-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(0, 229, 255, 0.14);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .contact-link:hover {
+        transform: translateY(-3px);
+    }
 }
 
 /* Footer */

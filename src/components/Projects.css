@@ -139,6 +139,7 @@
     border: 1px solid rgba(148, 163, 184, 0.12);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     transform: rotateX(12deg) rotateY(-16deg) translate3d(0, calc(var(--scroll-progress, 0) * 8px), 0);
+    transition: transform 0.45s var(--ease-out-expo), box-shadow 0.45s var(--ease-out-expo), border-color 0.45s var(--ease-out-expo);
 }
 
 .project-spotlight-card-top {
@@ -216,6 +217,7 @@
     transition: all var(--transition-base);
     display: flex;
     flex-direction: column;
+    will-change: transform;
 }
 
 .project-card:hover {
@@ -307,6 +309,21 @@
 .project-link:hover {
     color: var(--accent-cyan);
     border-color: var(--border-glow-cyan);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .project-spotlight:hover .project-spotlight-card {
+        transform: rotateX(12deg) rotateY(-16deg) translate3d(0, calc(var(--scroll-progress, 0) * 8px - 4px), 0) scale(1.01);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    .project-card:hover .project-icon {
+        transform: translateY(-2px) rotate(-4deg);
+    }
+
+    .project-card:hover .project-link {
+        transform: translateY(-1px);
+    }
 }
 
 .project-link--primary {
