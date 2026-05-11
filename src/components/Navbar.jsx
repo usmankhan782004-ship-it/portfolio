@@ -15,11 +15,8 @@ const NAV_ITEMS = [
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('hero')
-    const [mobileOpen, setMobileOpen] = useState(false)
 
     useEffect(() => {
-        document.body.style.overflow = mobileOpen ? 'hidden' : ''
-
         const handleScroll = () => setScrolled(window.scrollY > 50)
 
         const observer = new IntersectionObserver(
@@ -38,15 +35,10 @@ export default function Navbar() {
 
         window.addEventListener('scroll', handleScroll)
         return () => {
-            document.body.style.overflow = ''
             window.removeEventListener('scroll', handleScroll)
             sections.forEach((s) => observer.unobserve(s))
         }
-    }, [mobileOpen])
-
-    const handleClick = () => {
-        setMobileOpen(false)
-    }
+    }, [])
 
     return (
         <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
@@ -59,23 +51,12 @@ export default function Navbar() {
                     <span className="logo-bracket">{'/>'}</span>
                 </div>
 
-                <button
-                    className={`navbar-toggle${mobileOpen ? ' open' : ''}`}
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label="Toggle navigation"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <ul className={`navbar-links${mobileOpen ? ' open' : ''}`}>
+                <ul className="navbar-links">
                     {NAV_ITEMS.map((item) => (
                         <li key={item.href}>
                             <a
                                 href={item.href}
                                 className={activeSection === item.href.slice(1) ? 'active' : ''}
-                                onClick={handleClick}
                                 aria-label={`Go to ${item.label}`}
                             >
                                 {item.label}
@@ -84,12 +65,6 @@ export default function Navbar() {
                     ))}
                 </ul>
             </div>
-
-            <button
-                className={`navbar-backdrop${mobileOpen ? ' open' : ''}`}
-                aria-label="Close navigation menu"
-                onClick={() => setMobileOpen(false)}
-            />
         </nav>
     )
 }
