@@ -44,11 +44,8 @@ export default function Navbar() {
         }
     }, [mobileOpen])
 
-    const handleClick = (e, href) => {
-        e.preventDefault()
+    const handleClick = () => {
         setMobileOpen(false)
-        const el = document.querySelector(href)
-        if (el) el.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
@@ -78,7 +75,8 @@ export default function Navbar() {
                             <a
                                 href={item.href}
                                 className={activeSection === item.href.slice(1) ? 'active' : ''}
-                                onClick={(e) => handleClick(e, item.href)}
+                                onClick={handleClick}
+                                aria-label={`Go to ${item.label}`}
                             >
                                 {item.label}
                             </a>
