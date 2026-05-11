@@ -123,36 +123,13 @@
     }
 
     .navbar-inner {
-        height: auto;
-        min-height: 72px;
-        padding-top: 0.25rem;
-        padding-bottom: 0.75rem;
-        align-items: flex-start;
+        height: 72px;
+        padding: 0;
+        align-items: center;
     }
 
     .navbar-links {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-        padding: 0.4rem 0 0.15rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .navbar-links::-webkit-scrollbar {
         display: none;
-    }
-
-    .navbar-links a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.58rem 0.78rem;
-        font-size: 0.83rem;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
     }
 }
 
